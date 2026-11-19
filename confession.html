@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Something I Wanted to Say 🌷🤍</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-top: #ffe8ef;
+            --bg-mid: #fff4f8;
+            --bg-bot: #ffffff;
+            --pink-primary: #f497b6;
+            --pink-deep: #d96b94;
+            --pink-soft: #ffd1e0;
+            --pink-card: rgba(255, 255, 255, 0.85);
+            --text-dark: #4a2c3a;
+            --text-muted: #855a6e;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(160deg, var(--bg-top) 0%, var(--bg-mid) 52%, var(--bg-bot) 100%);
+            color: var(--text-dark);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Background Floating Soft Pink Bubbles & Sparkles */
+        .bg-decor {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .bubble {
+            position: absolute;
+            bottom: -80px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.95), rgba(255, 182, 206, 0.35));
+            box-shadow: 0 4px 16px rgba(244, 151, 182, 0.18);
+            animation: floatBubble linear infinite;
+        }
+
+        @keyframes floatBubble {
+            0% {
+                transform: translateY(0) translateX(0) scale(0.9);
+                opacity: 0;
+            }
+            15% { opacity: 0.85; }
+            85% { opacity: 0.85; }
+            100% {
+                transform: translateY(-115vh) translateX(-22px) scale(1.1);
+                opacity: 0;
+            }
+        }
+
+        .sparkle-bg {
+            position: absolute;
+            color: #f38bb0;
+            animation: twinkle 3.2s ease-in-out infinite;
+            user-select: none;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { transform: scale(0.75) rotate(0deg); opacity: 0.25; }
+            50% { transform: scale(1.25) rotate(18deg); opacity: 0.9; }
+        }
+
+        /* Main Card Container */
+        .app-wrapper {
+            position: relative;
+            z-index: 5;
+            width: 92%;
+            max-width: 430px;
+            background: var(--pink-card);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 2px solid rgba(255, 255, 255, 0.96);
+            border-radius: 32px;
+            padding: 28px 24px 24px;
+            box-shadow: 0 20px 50px rgba(217, 107, 148, 0.16), inset 0 0 24px rgba(255, 255, 255, 0.85);
+        }
+
+        /* Progress Bar (5 Slides) */
+        .progress-bar {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 24px;
+        }
+
+        .progress-segment {
+            flex: 1;
+            height: 6px;
+            background: #ffe0ea;
+            border-radius: 99px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .progress-segment.active {
+            background: var(--pink-primary);
+            box-shadow: 0 0 10px rgba(244, 151, 182, 0.65);
+        }
+
+        .progress-segment.passed {
+            background: #fbb8cf;
+        }
+
+        /* Slides */
+        .slides-viewport {
+            position: relative;
+            min-height: 365px;
+            display: flex;
+            align-items: center;
+        }
+
+        .slide {
+            display: none;
+            width: 100%;
+            text-align: center;
+            animation: slideEnter 0.65s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        }
+
+        .slide.active {
+            display: block;
+        }
+
+        @keyframes slideEnter {
+            0% {
+                opacity: 0;
+                transform: translateY(22px) scale(0.96);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        /* Animated Hero Icons */
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 92px;
+            height: 92px;
+            background: linear-gradient(145deg, #ffffff, #ffe4ee);
+            border: 2px solid #ffffff;
+            border-radius: 28px;
+            font-size: 44px;
+            margin-bottom: 18px;
+            box-shadow: 0 12px 28px rgba(244, 151, 182, 0.25);
+            animation: floatIcon 3.2s ease-in-out infinite;
+        }
+
+        @keyframes floatIcon {
+            0%, 100% { transform: translateY(0) rotate(-2deg); }
+            50% { transform: translateY(-10px) rotate(3deg); }
+        }
+
+        .tag-pill {
+            display: inline-block;
+            background: #ffebf2;
+            color: var(--pink-deep);
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            padding: 6px 14px;
+            border-radius: 99px;
+            margin-bottom: 12px;
+            border: 1px solid #ffd1e1;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 27px;
+            line-height: 1.25;
+            color: var(--text-dark);
+            margin-bottom: 12px;
+        }
+
+        h1 span {
+            color: var(--pink-deep);
+            font-style: italic;
+        }
+
+        p.desc {
+            font-size: 14.5px;
+            line-height: 1.65;
+            color: var(--text-muted);
+            margin-bottom: 16px;
+        }
+
+        /* Reason Cards on Slide 3 */
+        .reason-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            text-align: left;
+            margin-top: 8px;
+        }
+
+        .reason-item {
+            background: linear-gradient(135deg, #fff7fa, #ffffff);
+            border: 1px solid #ffd6e5;
+            padding: 11px 14px;
+            border-radius: 16px;
+            font-size: 13.5px;
+            color: var(--text-dark);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 4px 12px rgba(244, 151, 182, 0.09);
+            opacity: 0;
+            transform: translateX(-14px);
+            animation: itemPop 0.5s ease forwards;
+        }
+
+        .slide.active .reason-item:nth-child(1) { animation-delay: 0.15s; }
+        .slide.active .reason-item:nth-child(2) { animation-delay: 0.3s; }
+        .slide.active .reason-item:nth-child(3) { animation-delay: 0.45s; }
+
+        @keyframes itemPop {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* Quote Box on Slide 4 */
+        .quote-box {
+            background: linear-gradient(145deg, #fff0f5, #fffafd);
+            border: 1.5px dashed #f7a6c2;
+            border-radius: 20px;
+            padding: 18px 16px;
+            margin: 10px 0;
+        }
+
+        .quote-box p {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 15.5px;
+            color: var(--pink-deep);
+            line-height: 1.55;
+        }
+
+        /* Special Interactive Button on Slide 5 */
+        .magic-btn {
+            background: linear-gradient(135deg, #ec83a8, #f9adc8);
+            color: #ffffff;
+            border: none;
+            padding: 15px 24px;
+            border-radius: 99px;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 10px 25px rgba(236, 131, 168, 0.45);
+            transition: all 0.25s ease;
+            animation: pulseBtn 2s infinite;
+            margin-top: 6px;
+        }
+
+        .magic-btn:hover {
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 14px 30px rgba(236, 131, 168, 0.6);
+        }
+
+        .magic-btn:active {
+            transform: scale(0.97);
+        }
+
+        @keyframes pulseBtn {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(244, 151, 182, 0.55); }
+            50% { box-shadow: 0 0 0 12px rgba(244, 151, 182, 0); }
+        }
+
+        /* Hidden Confession Reveal Box after pressing button */
+        .confession-reveal {
+            display: none;
+            margin-top: 16px;
+            background: linear-gradient(145deg, #ffffff, #ffe9f1);
+            border: 2px solid #f9b5cd;
+            border-radius: 22px;
+            padding: 18px 16px;
+            box-shadow: 0 12px 30px rgba(236, 131, 168, 0.25);
+            animation: popInConfession 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+
+        .confession-reveal.show {
+            display: block;
+        }
+
+        @keyframes popInConfession {
+            0% { opacity: 0; transform: scale(0.65) translateY(15px); }
+            100% { opacity: 1; transform: scale(1) translateY(0); }
+        }
+
+        .confession-reveal h3 {
+            color: var(--pink-deep);
+            font-size: 17px;
+            margin-bottom: 6px;
+        }
+
+        .confession-reveal p {
+            font-size: 13.5px;
+            color: var(--text-dark);
+            line-height: 1.55;
+        }
+
+        /* Navigation Footer */
+        .nav-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 22px;
+            padding-top: 14px;
+            border-top: 1px solid #ffe4ee;
+        }
+
+        .nav-btn {
+            background: #fff0f5;
+            color: var(--pink-deep);
+            border: 1px solid #ffd1e2;
+            padding: 10px 18px;
+            border-radius: 99px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .nav-btn:hover:not(:disabled) {
+            background: var(--pink-primary);
+            color: #ffffff;
+            transform: translateY(-1px);
+        }
+
+        .nav-btn:disabled {
+            opacity: 0.35;
+            cursor: not-allowed;
+        }
+
+        .slide-counter {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--text-muted);
+            letter-spacing: 1px;
+        }
+
+        /* Burst & Floating Animations on Button Click */
+        .burst-particle {
+            position: fixed;
+            pointer-events: none;
+            z-index: 99;
+            animation: burstFly cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        @keyframes burstFly {
+            0% {
+                opacity: 1;
+                transform: translate(0, 0) scale(0.5) rotate(0deg);
+            }
+            80% { opacity: 1; }
+            100% {
+                opacity: 0;
+                transform: translate(var(--tx), var(--ty)) scale(1.35) rotate(var(--rot));
+            }
+        }
+
+        .floating-heart {
+            position: fixed;
+            bottom: -24px;
+            pointer-events: none;
+            z-index: 98;
+            animation: heartRise linear forwards;
+        }
+
+        @keyframes heartRise {
+            0% {
+                transform: translateY(0) scale(0.85) rotate(0deg);
+                opacity: 0.95;
+            }
+            100% {
+                transform: translateY(-108vh) scale(1.25) rotate(25deg);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Background Animated Decor -->
+    <div class="bg-decor" id="bgDecor"></div>
+
+    <!-- Main Interactive Card -->
+    <div class="app-wrapper">
+        <!-- 5-Slide Progress Bar -->
+        <div class="progress-bar" id="progressBar">
+            <div class="progress-segment active" onclick="goToSlide(0)"></div>
+            <div class="progress-segment" onclick="goToSlide(1)"></div>
+            <div class="progress-segment" onclick="goToSlide(2)"></div>
+            <div class="progress-segment" onclick="goToSlide(3)"></div>
+            <div class="progress-segment" onclick="goToSlide(4)"></div>
+        </div>
+
+        <div class="slides-viewport">
+            <!-- SLIDE 1 -->
+            <div class="slide active">
+                <div class="hero-badge">🌷</div>
+                <div class="tag-pill">A Little Note for You</div>
+                <h1>Hey, I Have <span>Something</span> to Say</h1>
+                <p class="desc">
+                    Jujur aku agak deg-degan nulis ini, tapi rasanya udah terlalu lama aku simpen sendiri. *Take your time* baca sampai akhir ya. 🌸
+                </p>
+            </div>
+
+            <!-- SLIDE 2 -->
+            <div class="slide">
+                <div class="hero-badge">🎀</div>
+                <div class="tag-pill">Honest Feeling</div>
+                <h1>Somehow, You Became <span>My Favorite Part</span></h1>
+                <p class="desc">
+                    Awalnya cuma obrolan biasa, tapi lama-lama *your presence* selalu bikin hari aku terasa lebih ringan. *Even little things about you* sering banget kepikiran. 🤍
+                </p>
+            </div>
+
+            <!-- SLIDE 3 -->
+            <div class="slide">
+                <div class="hero-badge">🫧</div>
+                <div class="tag-pill">Little Reasons Why</div>
+                <h1>Things I <span>Adore</span> About You</h1>
+                <div class="reason-list">
+                    <div class="reason-item">🌸 <span>Cara kamu ngobrol yang selalu bikin *comfortable* dan *warm*.</span></div>
+                    <div class="reason-item">✨ <span>*Your genuine vibe* yang nggak dibuat-buat sama sekali.</span></div>
+                    <div class="reason-item">🤍 <span>Gimana kehadiran kamu bisa ngubah *bad mood* jadi lebih baik.</span></div>
+                </div>
+            </div>
+
+            <!-- SLIDE 4 -->
+            <div class="slide">
+                <div class="hero-badge">💌</div>
+                <div class="tag-pill">No Pressure at All</div>
+                <h1>Just Being <span>Real</span> With You</h1>
+                <div class="quote-box">
+                    <p>"I don’t want to rush anything—I just wanted you to know how much you mean to me."</p>
+                </div>
+                <p class="desc" style="margin-top: 12px; margin-bottom: 0;">
+                    Apapun respon kamu nanti, *I truly appreciate* waktu kamu buat ngebaca ini. 🌷
+                </p>
+            </div>
+
+            <!-- SLIDE 5 (Interactive Finale) -->
+            <div class="slide">
+                <div class="hero-badge" id="heartIcon">🤍</div>
+                <div class="tag-pill">Final Step</div>
+                <h1>So, Here’s My <span>Confession...</span></h1>
+                <p class="desc" id="finalPrompt">
+                    Coba pencet tombol di bawah ini buat ngebuka bagian terakhirnya ya. 👇
+                </p>
+
+                <button class="magic-btn" id="confessBtn" onclick="triggerConfessionMagic()">
+                    Tap Here to Open My Heart 🌷✨
+                </button>
+
+                <div class="confession-reveal" id="confessionBox">
+                    <h3>I really like you. More than just as a friend. 🌸🤍</h3>
+                    <p>
+                        Aku suka caramu ada di sekitar aku, and I’d really love to get to know you even more—*at your own pace*. No rush, just honest feelings. ✨🌷
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation Controls -->
+        <div class="nav-controls">
+            <button class="nav-btn" id="prevBtn" onclick="changeSlide(-1)" disabled>← Back</button>
+            <span class="slide-counter" id="slideCounter">1 / 5</span>
+            <button class="nav-btn" id="nextBtn" onclick="changeSlide(1)">Next →</button>
+        </div>
+    </div>
+
+    <script>
+        // 1. Generate Soft Pink Bubbles & Sparkles in Background
+        const bgDecor = document.getElementById('bgDecor');
+
+        for (let i = 0; i < 16; i++) {
+            const bubble = document.createElement('div');
+            bubble.className = 'bubble';
+            const size = Math.random() * 55 + 20;
+            bubble.style.width = `${size}px`;
+            bubble.style.height = `${size}px`;
+            bubble.style.left = `${Math.random() * 100}%`;
+            bubble.style.animationDuration = `${Math.random() * 8 + 7}s`;
+            bubble.style.animationDelay = `${Math.random() * 6}s`;
+            bgDecor.appendChild(bubble);
+        }
+
+        const pinkIcons = ['✦', '✧', '🌸', '🌷', '🤍', '🫧'];
+        for (let i = 0; i < 18; i++) {
+            const sp = document.createElement('div');
+            sp.className = 'sparkle-bg';
+            sp.innerText = pinkIcons[Math.floor(Math.random() * pinkIcons.length)];
+            sp.style.left = `${Math.random() * 96}%`;
+            sp.style.top = `${Math.random() * 94}%`;
+            sp.style.fontSize = `${Math.random() * 12 + 12}px`;
+            sp.style.animationDelay = `${Math.random() * 3}s`;
+            bgDecor.appendChild(sp);
+        }
+
+        // 2. Slide Navigation Logic
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const segments = document.querySelectorAll('.progress-segment');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const slideCounter = document.getElementById('slideCounter');
+
+        function updateSlideUI() {
+            slides.forEach((s, idx) => {
+                s.classList.toggle('active', idx === currentSlide);
+            });
+
+            segments.forEach((seg, idx) => {
+                seg.classList.remove('active', 'passed');
+                if (idx === currentSlide) seg.classList.add('active');
+                else if (idx < currentSlide) seg.classList.add('passed');
+            });
+
+            prevBtn.disabled = currentSlide === 0;
+            nextBtn.disabled = currentSlide === slides.length - 1;
+            nextBtn.style.visibility = currentSlide === slides.length - 1 ? 'hidden' : 'visible';
+            slideCounter.innerText = `${currentSlide + 1} / ${slides.length}`;
+        }
+
+        function changeSlide(dir) {
+            const next = currentSlide + dir;
+            if (next >= 0 && next < slides.length) {
+                currentSlide = next;
+                updateSlideUI();
+            }
+        }
+
+        function goToSlide(index) {
+            currentSlide = index;
+            updateSlideUI();
+        }
+
+        // 3. Final Interactive Button Animation (Slide 5)
+        function triggerConfessionMagic() {
+            const btn = document.getElementById('confessBtn');
+            const confessionBox = document.getElementById('confessionBox');
+            const heartIcon = document.getElementById('heartIcon');
+            const finalPrompt = document.getElementById('finalPrompt');
+
+            heartIcon.innerText = '🌷';
+            finalPrompt.style.display = 'none';
+            btn.innerText = 'Tap Again for More 🌸🤍';
+            confessionBox.classList.add('show');
+
+            // Center burst explosion from button
+            const rect = btn.getBoundingClientRect();
+            const originX = rect.left + rect.width / 2;
+            const originY = rect.top + rect.height / 2;
+            const emojis = ['🌸', '🌷', '🤍', '🩷', '✨', '🫧', '🎀'];
+
+            for (let i = 0; i < 40; i++) {
+                const p = document.createElement('div');
+                p.className = 'burst-particle';
+                p.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+                p.style.left = `${originX}px`;
+                p.style.top = `${originY}px`;
+                p.style.fontSize = `${Math.random() * 14 + 14}px`;
+
+                const angle = Math.random() * Math.PI * 2;
+                const dist = Math.random() * 240 + 70;
+                p.style.setProperty('--tx', `${Math.cos(angle) * dist}px`);
+                p.style.setProperty('--ty', `${Math.sin(angle) * dist - 40}px`);
+                p.style.setProperty('--rot', `${(Math.random() - 0.5) * 540}deg`);
+                p.style.animationDuration = `${Math.random() * 0.8 + 1.1}s`;
+
+                document.body.appendChild(p);
+                setTimeout(() => p.remove(), 2000);
+            }
+
+            // Rising soft pink hearts & flowers
+            for (let i = 0; i < 42; i++) {
+                setTimeout(() => {
+                    const h = document.createElement('div');
+                    h.className = 'floating-heart';
+                    h.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+                    h.style.left = `${Math.random() * 100}vw`;
+                    h.style.fontSize = `${Math.random() * 12 + 13}px`;
+                    h.style.animationDuration = `${Math.random() * 2 + 2.5}s`;
+                    document.body.appendChild(h);
+
+                    setTimeout(() => h.remove(), 4600);
+                }, i * 55);
+            }
+        }
+    </script>
+</body>
+</html>
